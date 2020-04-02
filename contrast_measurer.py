@@ -54,13 +54,10 @@ def calculate_average_contrast_with_other_pixels(im, pixel):
 
 
 def image_contrast(path):
-    im = np.asarray(Image.open(path).resize((20, 20)))
+    im = np.asarray(Image.open(path).resize((30, 30)))
     avg_contrasts = []
     for row in range(im.shape[0]): 
         for column in range(im.shape[1]):
             avg_contrasts.append(calculate_average_contrast_with_other_pixels(im, im[row][column]))
             printProgressBar(row*im.shape[0]+column+1, im.shape[0]*im.shape[1])
     return np.mean(avg_contrasts), np.var(avg_contrasts)
-            
-path = "A01_GioneeS55\HDR-3.jpg"
-print(image_contrast(path), path)
