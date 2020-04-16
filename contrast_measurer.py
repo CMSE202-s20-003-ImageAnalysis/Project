@@ -61,3 +61,15 @@ def image_contrast(path):
             avg_contrasts.append(calculate_average_contrast_with_other_pixels(im, im[row][column]))
             printProgressBar(row*im.shape[0]+column+1, im.shape[0]*im.shape[1])
     return np.mean(avg_contrasts), np.var(avg_contrasts)
+
+def image_contrast_between(path1, path2):
+    im1 = np.asarray(Image.open(path1).resize((30, 30)))
+    im2 = np.asarray(Image.open(path2).resize((30, 30)))
+    contrasts = []
+    for row in range(im1.shape[0]): 
+        for column in range(im1.shape[1]):
+            c1 = im1[row][column]
+            c2 = im2[row][column]
+            contrasts.append(luminanace(c1[0], c1[1], c1[2])-luminanace(c2[0], c2[1], c2[2]))
+            printProgressBar(row*im1.shape[0]+column+1, im1.shape[0]*im1.shape[1])
+    return np.mean(contrasts), np.var(contrasts)

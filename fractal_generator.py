@@ -4,6 +4,7 @@ import imageio
 import matplotlib.pyplot as plt
 import os
 from contrast_measurer import image_contrast
+import json
  
 
 def julia(output, m = 480, n = 320, s = 300, a = -0.4, b = 0.5, grayscale = False):
@@ -22,7 +23,6 @@ def julia(output, m = 480, n = 320, s = 300, a = -0.4, b = 0.5, grayscale = Fals
     if grayscale:
         # imageio.imwrite(output, np.flipud(1 - M))
         # This is the grayscale version.
-        imageio.
         imageio.imwrite(output, np.flipud(255 - N))
         
     
@@ -39,9 +39,30 @@ def julia(output, m = 480, n = 320, s = 300, a = -0.4, b = 0.5, grayscale = Fals
         plt.close()
 
 
+ans = {
+    'HDR': [],
+    'SDR': []
+}
+
+file_count = 0
 directories = [item for item in os.listdir() if '.' not in item and '__' not in item]
+
 for directory in directories:
     files = os.listdir(f'./{directory}')
-    for f in files:
-        mean, var = image_contrast(f'./{directory}/{f}')
-        julia(f'/{directory}/Fractal-{f}', a = mean/10)
+    for f in files:  
+        if 'Fractal' not in f:
+            file_count += 1
+
+
+for directory in directories:
+    files = os.listdir(f'./{directory}')
+    for f in files:  
+        if 'Fractal' not in f:
+            mean, var = image_contrast(f'./{directory}/{f}')
+            ans['HDR' if 'HDR' in f else 'SDR'].append((mean, var))
+            file_count -= 1
+            print(f'Analyzed {f}. {file_count} files left...')
+        
+
+
+json.dump(ans, open("contrast_data.json", 'w'), indent=4)
