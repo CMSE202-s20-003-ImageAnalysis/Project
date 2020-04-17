@@ -23,7 +23,7 @@ if __name__ == '__main__':
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
         ])
 
-    data = datasets.ImageFolder('data__dir_binary',transform=transform)
+    data = datasets.ImageFolder('data__dir_binary_fractal',transform=transform)
 
     #For test
     num_data = len(data)
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     def imshow(img):
         img = img / 2 + 0.5  # unnormalize
         plt.imshow(np.transpose(img, (1, 2, 0)))  # convert from Tensor image
-        plt.savefig("thing.jpg")
+        plt.savefig("thingwith.jpg")
         
     # obtain one batch of training images
     dataiter = iter(train_loader)
@@ -232,4 +232,34 @@ if __name__ == '__main__':
 
     print('\nTest Accuracy (Overall): %2d%% (%2d/%2d)' % (
         100. * np.sum(class_correct) / np.sum(class_total),
-        np.sum(class_correct), np.sum(class_total)))
+        np.sum(class_correct), np.sum(class_total))) 
+
+# Without
+# Epoch: 1        Training Loss: 0.421299         Validation Loss: 0.041617
+# Validation loss decreased (inf --> 0.041617).  Saving model ...
+# Epoch: 2        Training Loss: 0.371931         Validation Loss: 0.037014
+# Validation loss decreased (0.041617 --> 0.037014).  Saving model ...
+# Epoch: 3        Training Loss: 0.369603         Validation Loss: 0.038283
+# Epoch: 4        Training Loss: 0.359903         Validation Loss: 0.037351
+# Epoch: 5        Training Loss: 0.349221         Validation Loss: 0.037590
+# Test Loss: 0.195213
+
+# Test Accuracy of     0: 100% (48/48)
+# Test Accuracy of     1:  0% ( 0/48)
+
+# Test Accuracy (Overall): 50% (48/96)
+
+# With
+# Epoch: 1        Training Loss: 0.401943         Validation Loss: 0.039427
+# Validation loss decreased (inf --> 0.039427).  Saving model ...
+# Epoch: 2        Training Loss: 0.392773         Validation Loss: 0.038636
+# Validation loss decreased (0.039427 --> 0.038636).  Saving model ...
+# Epoch: 3        Training Loss: 0.383426         Validation Loss: 0.041589
+# Epoch: 4        Training Loss: 0.386041         Validation Loss: 0.039223
+# Epoch: 5        Training Loss: 0.381064         Validation Loss: 0.038848
+# Test Loss: 0.177392
+
+# Test Accuracy of     0: 100% (51/51)
+# Test Accuracy of     1:  0% ( 0/45)
+
+# Test Accuracy (Overall): 53% (51/96)

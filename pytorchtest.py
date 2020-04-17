@@ -31,7 +31,7 @@ def run():
         ]),
     }
 
-    data_dir = 'data__dir_fractal'
+    data_dir = 'data__dir'
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
                                             data_transforms[x])
                     for x in ['train', 'val']}
@@ -44,7 +44,7 @@ def run():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     def imshow(inp, title=None):
-        """Imshow for Tensor."""
+        """Imshow for Tensor.""" 
         inp = inp.numpy().transpose((1, 2, 0))
         mean = np.array([0.485, 0.456, 0.406])
         std = np.array([0.229, 0.224, 0.225])
@@ -53,7 +53,7 @@ def run():
         plt.imshow(inp)
         if title is not None:
             plt.title(title)
-        plt.savefig("thing.jpg")  # pause a bit so that plots are updated
+        plt.savefig("transferlearningwithout.jpg")  # pause a bit so that plots are updated
 
 
     # # Get a batch of training data
@@ -178,3 +178,250 @@ def run():
 if __name__ == '__main__':
     run()
 
+## Without Fractals
+# Epoch 0/23
+# ----------
+# train Loss: 0.8077 Acc: 0.5161
+# val Loss: 1.3680 Acc: 0.4340
+
+# Epoch 1/23
+# ----------
+# train Loss: 0.8714 Acc: 0.4871
+# val Loss: 1.0640 Acc: 0.4057
+
+# Epoch 2/23
+# ----------
+# train Loss: 0.9174 Acc: 0.5323
+# val Loss: 1.1678 Acc: 0.4434
+
+# Epoch 3/23
+# ----------
+# train Loss: 1.0291 Acc: 0.4968
+# val Loss: 1.0445 Acc: 0.3868
+
+# Epoch 4/23
+# ----------
+# train Loss: 0.8853 Acc: 0.5355
+# val Loss: 0.8793 Acc: 0.4906
+
+# Epoch 5/23
+# ----------
+# train Loss: 0.9093 Acc: 0.4677
+# val Loss: 0.9282 Acc: 0.4906
+
+# Epoch 6/23
+# ----------
+# train Loss: 0.8530 Acc: 0.5065
+# val Loss: 1.0873 Acc: 0.4245
+
+# Epoch 7/23
+# ----------
+# train Loss: 0.7166 Acc: 0.5613
+# val Loss: 0.8471 Acc: 0.4434
+
+# Epoch 8/23
+# ----------
+# train Loss: 0.6899 Acc: 0.5871
+# val Loss: 0.8031 Acc: 0.4811
+
+# Epoch 9/23
+# ----------
+# train Loss: 0.6869 Acc: 0.5710
+# val Loss: 0.9005 Acc: 0.4245
+
+# Epoch 10/23
+# ----------
+# train Loss: 0.6942 Acc: 0.5419
+# val Loss: 0.8106 Acc: 0.4811
+
+# Epoch 11/23
+# ----------
+# train Loss: 0.6930 Acc: 0.5839
+# val Loss: 0.8042 Acc: 0.5000
+
+# Epoch 12/23
+# ----------
+# train Loss: 0.6721 Acc: 0.5677
+# val Loss: 0.8061 Acc: 0.4340
+
+# Epoch 13/23
+# ----------
+# train Loss: 0.6817 Acc: 0.5710
+# val Loss: 0.8452 Acc: 0.4151
+
+# Epoch 14/23
+# ----------
+# train Loss: 0.6666 Acc: 0.6097
+# val Loss: 0.8435 Acc: 0.3962
+
+# Epoch 15/23
+# ----------
+# train Loss: 0.6649 Acc: 0.5806
+# val Loss: 0.8175 Acc: 0.4434
+
+# Epoch 16/23
+# ----------
+# train Loss: 0.6653 Acc: 0.5903
+# val Loss: 0.8328 Acc: 0.4528
+
+# Epoch 17/23
+# ----------
+# train Loss: 0.6464 Acc: 0.5903
+# val Loss: 0.8253 Acc: 0.4151
+
+# Epoch 18/23
+# ----------
+# train Loss: 0.6688 Acc: 0.5968
+# val Loss: 0.8198 Acc: 0.4623
+
+# Epoch 19/23
+# ----------
+# train Loss: 0.6435 Acc: 0.6226
+# val Loss: 0.8170 Acc: 0.4057
+
+# Epoch 20/23
+# ----------
+# train Loss: 0.6365 Acc: 0.6323
+# val Loss: 0.8214 Acc: 0.4528
+
+# Epoch 21/23
+# ----------
+# train Loss: 0.6503 Acc: 0.6355
+# val Loss: 0.8193 Acc: 0.4245
+
+# Epoch 22/23
+# ----------
+# train Loss: 0.6511 Acc: 0.6226
+# val Loss: 0.8228 Acc: 0.3962
+
+# Epoch 23/23
+# ----------
+# train Loss: 0.6693 Acc: 0.5871
+# val Loss: 0.8198 Acc: 0.4151
+
+# Training complete in 7m 4s
+# Best val Acc: 0.500000
+
+## With
+# Epoch 0/23
+# ----------
+# train Loss: 0.9003 Acc: 0.5430
+# val Loss: 1.1050 Acc: 0.5000
+
+# Epoch 1/23
+# ----------
+# train Loss: 0.8917 Acc: 0.4967
+# val Loss: 1.0293 Acc: 0.5526
+
+# Epoch 2/23
+# ----------
+# train Loss: 0.8222 Acc: 0.5596
+# val Loss: 0.9785 Acc: 0.5000
+
+# Epoch 3/23
+# ----------
+# train Loss: 0.8173 Acc: 0.4934
+# val Loss: 0.7292 Acc: 0.4737
+
+# Epoch 4/23
+# ----------
+# train Loss: 1.0375 Acc: 0.5166
+# val Loss: 2.5448 Acc: 0.5088
+
+# Epoch 5/23
+# ----------
+# train Loss: 1.0239 Acc: 0.5166
+# val Loss: 1.1332 Acc: 0.4912
+
+# Epoch 6/23
+# ----------
+# train Loss: 0.8347 Acc: 0.5298
+# val Loss: 0.8243 Acc: 0.5175
+
+# Epoch 7/23
+# ----------
+# train Loss: 0.7016 Acc: 0.5530
+# val Loss: 0.7330 Acc: 0.5175
+
+# Epoch 8/23
+# ----------
+# train Loss: 0.7235 Acc: 0.5397
+# val Loss: 0.7473 Acc: 0.5614
+
+# Epoch 9/23
+# ----------
+# train Loss: 0.7122 Acc: 0.5265
+# val Loss: 0.7492 Acc: 0.5000
+
+# Epoch 10/23
+# ----------
+# train Loss: 0.7048 Acc: 0.5397
+# val Loss: 0.7376 Acc: 0.4649
+
+# Epoch 11/23
+# ----------
+# train Loss: 0.6866 Acc: 0.5530
+# val Loss: 0.7462 Acc: 0.5351
+
+# Epoch 12/23
+# ----------
+# train Loss: 0.7028 Acc: 0.5364
+# val Loss: 0.7162 Acc: 0.4912
+
+# Epoch 13/23
+# ----------
+# train Loss: 0.7218 Acc: 0.5000
+# val Loss: 0.7449 Acc: 0.5263
+
+# Epoch 14/23
+# ----------
+# train Loss: 0.6877 Acc: 0.5629
+# val Loss: 0.7269 Acc: 0.5263
+
+# Epoch 15/23
+# ----------
+# train Loss: 0.6868 Acc: 0.5828
+# val Loss: 0.7111 Acc: 0.5175
+
+# Epoch 16/23
+# ----------
+# train Loss: 0.6985 Acc: 0.5430
+# val Loss: 0.7219 Acc: 0.4825
+
+# Epoch 17/23
+# ----------
+# train Loss: 0.6958 Acc: 0.5298
+# val Loss: 0.7092 Acc: 0.5088
+
+# Epoch 18/23
+# ----------
+# train Loss: 0.6890 Acc: 0.5662
+# val Loss: 0.7164 Acc: 0.5000
+
+# Epoch 19/23
+# ----------
+# train Loss: 0.6803 Acc: 0.6060
+# val Loss: 0.7243 Acc: 0.5263
+
+# Epoch 20/23
+# ----------
+# train Loss: 0.6909 Acc: 0.5629
+# val Loss: 0.7062 Acc: 0.5175
+
+# Epoch 21/23
+# ----------
+# train Loss: 0.6734 Acc: 0.5695
+# val Loss: 0.7168 Acc: 0.5000
+
+# Epoch 22/23
+# ----------
+# train Loss: 0.6773 Acc: 0.5795
+# val Loss: 0.7143 Acc: 0.5000
+
+# Epoch 23/23
+# ----------
+# train Loss: 0.6881 Acc: 0.5695
+# val Loss: 0.7289 Acc: 0.5263
+
+# Training complete in 2m 56s
+# Best val Acc: 0.561404
